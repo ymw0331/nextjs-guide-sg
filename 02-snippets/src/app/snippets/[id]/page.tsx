@@ -13,7 +13,6 @@ interface SnippetShowPageProps {
 export default async function SnippetShowPage(props: SnippetShowPageProps) {
 
     // await new Promise((r) => setTimeout(r, 2000))
-
     // const snippet = await db.snippet.findFirst({
     //     where: { id: parseInt(props.params.id) }
     // })
@@ -24,12 +23,11 @@ export default async function SnippetShowPage(props: SnippetShowPageProps) {
         where: { id: snippetId }
     })
 
-
     if (!snippet) {
         return notFound()
     }
 
-    console.log("Props", props)
+    console.log("Props passed in SnippetShowPage:", props)
 
     const deleteSnippetAction = actions.deleteSnippet.bind(null, snippet.id)
 
