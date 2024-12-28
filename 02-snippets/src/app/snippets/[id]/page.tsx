@@ -5,9 +5,9 @@ import * as actions from "@/actions"
 
 // interface structure of the props
 interface SnippetShowPageProps {
-    params: {
+    params: Promise<{
         id: string
-    }
+    }>
 }
 
 export default async function SnippetShowPage(props: SnippetShowPageProps) {
@@ -54,4 +54,17 @@ export default async function SnippetShowPage(props: SnippetShowPageProps) {
             </pre>
         </div>
     )
+}
+
+
+// Generate static paths for all snippets
+export async function generateStaticParams() {
+    const snippets = await db.snippet.findMany()
+
+    // next expect string, we need to convert it to string
+    return snippets.map((snippet) => {
+        return {
+            id: snippet.id.toString()
+        }
+    })
 }

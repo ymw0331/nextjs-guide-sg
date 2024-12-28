@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { db } from "@/db";
 
+
+// export const dynamic = 'force-dynamic' //it disable caching entirely
+// will not build up at build time, reserve again and again
+
 export default async function Home() {
 
   const snippets = await db.snippet.findMany();

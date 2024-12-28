@@ -16,7 +16,7 @@ export default function SnippetCreatePage() {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         const formData = new FormData(event.currentTarget)
-       startTransition(() => {
+        startTransition(() => {
             action(formData)
         })
     }
